@@ -20,7 +20,19 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $users,
+            'data' => $users->items(),
+            'meta' => [
+                'total' => $users->total(),
+                'last_page' => $users->lastPage(),
+                'current_page' => $users->currentPage(),
+                'per_page' => $users->perPage(),
+            ],
+            'links' => [
+                'first' => $users->url(1),
+                'last' => $users->url($users->lastPage()),
+                'next' => $users->nextPageUrl(),
+                'prev' => $users->previousPageUrl(),
+            ],
         ]);
     }
 

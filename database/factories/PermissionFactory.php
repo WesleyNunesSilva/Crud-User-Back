@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Permission>
  */
-class UserFactory extends Factory
+class PermissionFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -25,10 +25,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'phone' => fake()->phoneNumber(),
-            'user_type' => 'Estadual',
-            'department' => 'TI',
+            'parent_id' => null,
 
         ];
     }
